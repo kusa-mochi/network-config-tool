@@ -10,6 +10,8 @@
                 <ResourceDictionary
                     Source="Styles/ButtonResources.xaml" />
                 <ResourceDictionary
+                    Source="Styles/ComboBoxResources.xaml" />
+                <ResourceDictionary
                     Source="Styles/SeparatorResources.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

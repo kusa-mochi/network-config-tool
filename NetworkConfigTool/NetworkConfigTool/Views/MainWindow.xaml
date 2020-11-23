@@ -16,112 +16,160 @@
             TargetType="{x:Type Button}"
             BasedOn="{StaticResource ButtonStyle}" />
         <Style
+            TargetType="{x:Type ComboBox}"
+            BasedOn="{StaticResource ComboBoxStyle}" />
+        <Style
             TargetType="{x:Type Separator}"
             BasedOn="{StaticResource SeparatorStyle}" />
     </Window.Resources>
     <StackPanel>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="100" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+        <StackPanel
+            Margin="8"
+            Orientation="Horizontal">
             <TextBlock
-                Text="Network Adapter" />
-            <TextBlock
-                Text="IP Address"
-                Grid.Row="1" />
-            <TextBlock
-                Text="Mask"
-                Grid.Row="2" />
-            <TextBlock
-                Text="Default Gateway"
-                Grid.Row="3" />
-            <TextBlock
-                Text="Primary DNS"
-                Grid.Row="4" />
-            <TextBlock
-                Text="Secondary DNS"
-                Grid.Row="5" />
+                Text="Network Adapter"
+                Margin="0,0,8,0" />
             <ComboBox
-                Grid.Column="1">
+                Width="150">
                 <ComboBoxItem>Adapter 1</ComboBoxItem>
                 <ComboBoxItem>Adapter 2</ComboBoxItem>
                 <ComboBoxItem>Adapter 3</ComboBoxItem>
             </ComboBox>
-            <UserControls:IpTextBox
-                Address="192.168.1.123"
-                Grid.Row="1"
-                Grid.Column="1" />
-            <ComboBox
-                Grid.Row="2"
-                Grid.Column="1">
-                <ComboBoxItem>24</ComboBoxItem>
-                <ComboBoxItem>16</ComboBoxItem>
-                <ComboBoxItem>8</ComboBoxItem>
-                <Separator />
-                <ComboBoxItem>31</ComboBoxItem>
-                <ComboBoxItem>30</ComboBoxItem>
-                <ComboBoxItem>29</ComboBoxItem>
-                <ComboBoxItem>28</ComboBoxItem>
-                <ComboBoxItem>27</ComboBoxItem>
-                <ComboBoxItem>26</ComboBoxItem>
-                <ComboBoxItem>25</ComboBoxItem>
-                <ComboBoxItem>24</ComboBoxItem>
-                <ComboBoxItem>23</ComboBoxItem>
-                <ComboBoxItem>22</ComboBoxItem>
-                <ComboBoxItem>21</ComboBoxItem>
-                <ComboBoxItem>20</ComboBoxItem>
-                <ComboBoxItem>19</ComboBoxItem>
-                <ComboBoxItem>18</ComboBoxItem>
-                <ComboBoxItem>17</ComboBoxItem>
-                <ComboBoxItem>16</ComboBoxItem>
-                <ComboBoxItem>15</ComboBoxItem>
-                <ComboBoxItem>14</ComboBoxItem>
-                <ComboBoxItem>13</ComboBoxItem>
-                <ComboBoxItem>12</ComboBoxItem>
-                <ComboBoxItem>11</ComboBoxItem>
-                <ComboBoxItem>10</ComboBoxItem>
-                <ComboBoxItem>9</ComboBoxItem>
-                <ComboBoxItem>8</ComboBoxItem>
-                <ComboBoxItem>7</ComboBoxItem>
-                <ComboBoxItem>6</ComboBoxItem>
-                <ComboBoxItem>5</ComboBoxItem>
-                <ComboBoxItem>4</ComboBoxItem>
-                <ComboBoxItem>3</ComboBoxItem>
-                <ComboBoxItem>2</ComboBoxItem>
-                <ComboBoxItem>1</ComboBoxItem>
-                <ComboBoxItem>0</ComboBoxItem>
-            </ComboBox>
-            <UserControls:IpTextBox
-                Address="192.168.1.123"
-                Grid.Row="3"
-                Grid.Column="1" />
-            <UserControls:IpTextBox
-                Address="192.168.1.123"
-                Grid.Row="4"
-                Grid.Column="1" />
-            <UserControls:IpTextBox
-                Address="192.168.1.123"
-                Grid.Row="5"
-                Grid.Column="1" />
-        </Grid>
-        <Separator />
+        </StackPanel>
+        <Border
+            BorderBrush="Gray"
+            BorderThickness="0.5"
+            CornerRadius="4"
+            Margin="8,0,8,8">
+            <Grid
+                Margin="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="24" />
+                    <RowDefinition
+                        Height="24" />
+                    <RowDefinition
+                        Height="24" />
+                    <RowDefinition
+                        Height="24" />
+                    <RowDefinition
+                        Height="24" />
+                    <RowDefinition
+                        Height="24" />
+                    <RowDefinition
+                        Height="24" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="100" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Text="Set up in this App"
+                    VerticalAlignment="Center" />
+                <TextBlock
+                    Text="Enable"
+                    Grid.Row="1"
+                    VerticalAlignment="Center" />
+                <TextBlock
+                    Text="IP Address"
+                    Grid.Row="2"
+                    VerticalAlignment="Center" />
+                <TextBlock
+                    Text="Mask"
+                    Grid.Row="3"
+                    VerticalAlignment="Center" />
+                <TextBlock
+                    Text="Default Gateway"
+                    Grid.Row="4"
+                    VerticalAlignment="Center" />
+                <TextBlock
+                    Text="Primary DNS"
+                    Grid.Row="5"
+                    VerticalAlignment="Center" />
+                <TextBlock
+                    Text="Secondary DNS"
+                    Grid.Row="6"
+                    VerticalAlignment="Center" />
+                <CheckBox
+                    x:Name="SetUpInThisAppCheckBox"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"></CheckBox>
+                <CheckBox
+                    x:Name="EnableCheckBox"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"></CheckBox>
+                <UserControls:IpTextBox
+                    Address="192.168.1.123"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    VerticalAlignment="Center" />
+                <ComboBox
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    VerticalAlignment="Center">
+                    <ComboBoxItem>24</ComboBoxItem>
+                    <ComboBoxItem>16</ComboBoxItem>
+                    <ComboBoxItem>8</ComboBoxItem>
+                    <Separator />
+                    <ComboBoxItem>31</ComboBoxItem>
+                    <ComboBoxItem>30</ComboBoxItem>
+                    <ComboBoxItem>29</ComboBoxItem>
+                    <ComboBoxItem>28</ComboBoxItem>
+                    <ComboBoxItem>27</ComboBoxItem>
+                    <ComboBoxItem>26</ComboBoxItem>
+                    <ComboBoxItem>25</ComboBoxItem>
+                    <ComboBoxItem>24</ComboBoxItem>
+                    <ComboBoxItem>23</ComboBoxItem>
+                    <ComboBoxItem>22</ComboBoxItem>
+                    <ComboBoxItem>21</ComboBoxItem>
+                    <ComboBoxItem>20</ComboBoxItem>
+                    <ComboBoxItem>19</ComboBoxItem>
+                    <ComboBoxItem>18</ComboBoxItem>
+                    <ComboBoxItem>17</ComboBoxItem>
+                    <ComboBoxItem>16</ComboBoxItem>
+                    <ComboBoxItem>15</ComboBoxItem>
+                    <ComboBoxItem>14</ComboBoxItem>
+                    <ComboBoxItem>13</ComboBoxItem>
+                    <ComboBoxItem>12</ComboBoxItem>
+                    <ComboBoxItem>11</ComboBoxItem>
+                    <ComboBoxItem>10</ComboBoxItem>
+                    <ComboBoxItem>9</ComboBoxItem>
+                    <ComboBoxItem>8</ComboBoxItem>
+                    <ComboBoxItem>7</ComboBoxItem>
+                    <ComboBoxItem>6</ComboBoxItem>
+                    <ComboBoxItem>5</ComboBoxItem>
+                    <ComboBoxItem>4</ComboBoxItem>
+                    <ComboBoxItem>3</ComboBoxItem>
+                    <ComboBoxItem>2</ComboBoxItem>
+                    <ComboBoxItem>1</ComboBoxItem>
+                    <ComboBoxItem>0</ComboBoxItem>
+                </ComboBox>
+                <UserControls:IpTextBox
+                    Address="192.168.1.123"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    VerticalAlignment="Center" />
+                <UserControls:IpTextBox
+                    Address="192.168.1.123"
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    VerticalAlignment="Center" />
+                <UserControls:IpTextBox
+                    Address="192.168.1.123"
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    VerticalAlignment="Center" />
+            </Grid>
+        </Border>
         <StackPanel
             Orientation="Horizontal"
             HorizontalAlignment="Right">
             <Button
-                Width="120">Apply</Button>
+                Padding="8">Apply</Button>
             <Button
-                Width="120">Close</Button>
+                Padding="8">Make Config File</Button>
         </StackPanel>
     </StackPanel>
 </Window>
