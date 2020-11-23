@@ -108,7 +108,9 @@
                 <ComboBox
                     Grid.Row="3"
                     Grid.Column="1"
-                    VerticalAlignment="Center">
+                    VerticalAlignment="Center"
+                    Width="60"
+                    HorizontalAlignment="Left">
                     <ComboBoxItem>24</ComboBoxItem>
                     <ComboBoxItem>16</ComboBoxItem>
                     <ComboBoxItem>8</ComboBoxItem>

@@ -71,7 +71,7 @@
             Grid.Column="0"
             TextAlignment="Center"
             MaxLength="3"
-            BorderThickness="1,1,0,1"
+            BorderThickness="0,0,0,1"
             VerticalContentAlignment="Center"
             TextChanged="TextBoxBase_OnTextChanged"
             PreviewKeyDown="UIElement_OnPreviewKeyDown"
@@ -82,7 +82,7 @@
             TextAlignment="Center"
             IsReadOnly="True"
             Focusable="False"
-            BorderThickness="0,1,0,1"
+            BorderThickness="0,0,0,1"
             VerticalContentAlignment="Center"
             IsReadOnlyCaretVisible="False" />
 
@@ -91,7 +91,7 @@
             Grid.Column="2"
             TextAlignment="Center"
             MaxLength="3"
-            BorderThickness="0,1,0,1"
+            BorderThickness="0,0,0,1"
             VerticalContentAlignment="Center"
             TextChanged="TextBoxBase_OnTextChanged"
             PreviewKeyDown="UIElement_OnPreviewKeyDown"
@@ -102,7 +102,7 @@
             TextAlignment="Center"
             IsReadOnly="True"
             Focusable="False"
-            BorderThickness="0,1,0,1"
+            BorderThickness="0,0,0,1"
             VerticalContentAlignment="Center"
             IsReadOnlyCaretVisible="False" />
 
@@ -111,7 +111,7 @@
             Grid.Column="4"
             TextAlignment="Center"
             MaxLength="3"
-            BorderThickness="0,1,0,1"
+            BorderThickness="0,0,0,1"
             VerticalContentAlignment="Center"
             TextChanged="TextBoxBase_OnTextChanged"
             PreviewKeyDown="UIElement_OnPreviewKeyDown"
@@ -122,7 +122,7 @@
             TextAlignment="Center"
             IsReadOnly="True"
             Focusable="False"
-            BorderThickness="0,1,0,1"
+            BorderThickness="0,0,0,1"
             VerticalContentAlignment="Center"
             IsReadOnlyCaretVisible="False" />
 
@@ -131,7 +131,7 @@
             Grid.Column="6"
             TextAlignment="Center"
             MaxLength="3"
-            BorderThickness="0,1,1,1"
+            BorderThickness="0,0,0,1"
             VerticalContentAlignment="Center"
             TextChanged="TextBoxBase_OnTextChanged"
             PreviewKeyDown="UIElement_OnPreviewKeyDown"
