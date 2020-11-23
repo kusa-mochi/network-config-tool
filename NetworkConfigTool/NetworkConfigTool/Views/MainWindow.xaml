@@ -4,43 +4,124 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:vm="clr-namespace:NetworkConfigTool.ViewModels"
-    MinWidth="200"
+    xmlns:UserControls="clr-namespace:NetworkConfigTool.UserControls"
     SizeToContent="WidthAndHeight"
     Title="Network config tool"
     WindowStyle="ToolWindow">
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
+    <Window.Resources>
+        <Style
+            TargetType="{x:Type Button}"
+            BasedOn="{StaticResource ButtonStyle}" />
+        <Style
+            TargetType="{x:Type Separator}"
+            BasedOn="{StaticResource SeparatorStyle}" />
+    </Window.Resources>
     <StackPanel>
-        <ScrollViewer
-            Margin="0,0,0,8"
-            MaxHeight="400"
-            HorizontalScrollBarVisibility="Auto"
-            VerticalScrollBarVisibility="Auto">
-            <ListBox
-                ItemsSource="{Binding ConfigItems}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel
-                            Orientation="Horizontal">
-                            <TextBlock
-                                Text="*" />
-                            <TextBlock
-                                Text="{Binding Path=Name}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </ScrollViewer>
-        <WrapPanel>
-            <Button>Apply</Button>
-            <Button>Add</Button>
-            <Button>Edit</Button>
-            <Button>Delete</Button>
-        </WrapPanel>
-        <WrapPanel>
-            <Button>Import</Button>
-            <Button>Export</Button>
-        </WrapPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="100" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Text="Network Adapter" />
+            <TextBlock
+                Text="IP Address"
+                Grid.Row="1" />
+            <TextBlock
+                Text="Mask"
+                Grid.Row="2" />
+            <TextBlock
+                Text="Default Gateway"
+                Grid.Row="3" />
+            <TextBlock
+                Text="Primary DNS"
+                Grid.Row="4" />
+            <TextBlock
+                Text="Secondary DNS"
+                Grid.Row="5" />
+            <ComboBox
+                Grid.Column="1">
+                <ComboBoxItem>Adapter 1</ComboBoxItem>
+                <ComboBoxItem>Adapter 2</ComboBoxItem>
+                <ComboBoxItem>Adapter 3</ComboBoxItem>
+            </ComboBox>
+            <UserControls:IpTextBox
+                Address="192.168.1.123"
+                Grid.Row="1"
+                Grid.Column="1" />
+            <ComboBox
+                Grid.Row="2"
+                Grid.Column="1">
+                <ComboBoxItem>24</ComboBoxItem>
+                <ComboBoxItem>16</ComboBoxItem>
+                <ComboBoxItem>8</ComboBoxItem>
+                <Separator />
+                <ComboBoxItem>31</ComboBoxItem>
+                <ComboBoxItem>30</ComboBoxItem>
+                <ComboBoxItem>29</ComboBoxItem>
+                <ComboBoxItem>28</ComboBoxItem>
+                <ComboBoxItem>27</ComboBoxItem>
+                <ComboBoxItem>26</ComboBoxItem>
+                <ComboBoxItem>25</ComboBoxItem>
+                <ComboBoxItem>24</ComboBoxItem>
+                <ComboBoxItem>23</ComboBoxItem>
+                <ComboBoxItem>22</ComboBoxItem>
+                <ComboBoxItem>21</ComboBoxItem>
+                <ComboBoxItem>20</ComboBoxItem>
+                <ComboBoxItem>19</ComboBoxItem>
+                <ComboBoxItem>18</ComboBoxItem>
+                <ComboBoxItem>17</ComboBoxItem>
+                <ComboBoxItem>16</ComboBoxItem>
+                <ComboBoxItem>15</ComboBoxItem>
+                <ComboBoxItem>14</ComboBoxItem>
+                <ComboBoxItem>13</ComboBoxItem>
+                <ComboBoxItem>12</ComboBoxItem>
+                <ComboBoxItem>11</ComboBoxItem>
+                <ComboBoxItem>10</ComboBoxItem>
+                <ComboBoxItem>9</ComboBoxItem>
+                <ComboBoxItem>8</ComboBoxItem>
+                <ComboBoxItem>7</ComboBoxItem>
+                <ComboBoxItem>6</ComboBoxItem>
+                <ComboBoxItem>5</ComboBoxItem>
+                <ComboBoxItem>4</ComboBoxItem>
+                <ComboBoxItem>3</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
+                <ComboBoxItem>1</ComboBoxItem>
+                <ComboBoxItem>0</ComboBoxItem>
+            </ComboBox>
+            <UserControls:IpTextBox
+                Address="192.168.1.123"
+                Grid.Row="3"
+                Grid.Column="1" />
+            <UserControls:IpTextBox
+                Address="192.168.1.123"
+                Grid.Row="4"
+                Grid.Column="1" />
+            <UserControls:IpTextBox
+                Address="192.168.1.123"
+                Grid.Row="5"
+                Grid.Column="1" />
+        </Grid>
+        <Separator />
+        <StackPanel
+            Orientation="Horizontal"
+            HorizontalAlignment="Right">
+            <Button
+                Width="120">Apply</Button>
+            <Button
+                Width="120">Close</Button>
+        </StackPanel>
     </StackPanel>
 </Window>
