@@ -12,6 +12,8 @@
         <vm:MainWindowViewModel />
     </Window.DataContext>
     <Window.Resources>
+        <BooleanToVisibilityConverter
+            x:Key="BooleanToVisibilityConverter" />
         <Style
             TargetType="{x:Type Button}"
             BasedOn="{StaticResource ButtonStyle}" />
@@ -24,13 +26,16 @@
     </Window.Resources>
     <StackPanel>
         <StackPanel
+            Height="24"
             Margin="8"
             Orientation="Horizontal">
             <TextBlock
                 Text="Network Adapter"
-                Margin="0,0,8,0" />
+                Margin="0,0,8,0"
+                VerticalAlignment="Center" />
             <ComboBox
-                Width="150">
+                Width="150"
+                VerticalAlignment="Center">
                 <ComboBoxItem>Adapter 1</ComboBoxItem>
                 <ComboBoxItem>Adapter 2</ComboBoxItem>
                 <ComboBoxItem>Adapter 3</ComboBoxItem>
@@ -70,27 +75,33 @@
                 <TextBlock
                     Text="Enable"
                     Grid.Row="1"
-                    VerticalAlignment="Center" />
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <TextBlock
                     Text="IP Address"
                     Grid.Row="2"
-                    VerticalAlignment="Center" />
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <TextBlock
                     Text="Mask"
                     Grid.Row="3"
-                    VerticalAlignment="Center" />
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <TextBlock
                     Text="Default Gateway"
                     Grid.Row="4"
-                    VerticalAlignment="Center" />
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <TextBlock
                     Text="Primary DNS"
                     Grid.Row="5"
-                    VerticalAlignment="Center" />
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <TextBlock
                     Text="Secondary DNS"
                     Grid.Row="6"
-                    VerticalAlignment="Center" />
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <CheckBox
                     x:Name="SetUpInThisAppCheckBox"
                     Grid.Column="1"
@@ -99,18 +110,23 @@
                     x:Name="EnableCheckBox"
                     Grid.Row="1"
                     Grid.Column="1"
-                    VerticalAlignment="Center"></CheckBox>
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}"></CheckBox>
                 <UserControls:IpTextBox
                     Address="192.168.1.123"
                     Grid.Row="2"
                     Grid.Column="1"
-                    VerticalAlignment="Center" />
+                    IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <ComboBox
                     Grid.Row="3"
                     Grid.Column="1"
+                    IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
                     VerticalAlignment="Center"
                     Width="60"
-                    HorizontalAlignment="Left">
+                    HorizontalAlignment="Left"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}">
                     <ComboBoxItem>24</ComboBoxItem>
                     <ComboBoxItem>16</ComboBoxItem>
                     <ComboBoxItem>8</ComboBoxItem>
@@ -152,17 +168,23 @@
                     Address="192.168.1.123"
                     Grid.Row="4"
                     Grid.Column="1"
-                    VerticalAlignment="Center" />
+                    IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <UserControls:IpTextBox
                     Address="192.168.1.123"
                     Grid.Row="5"
                     Grid.Column="1"
-                    VerticalAlignment="Center" />
+                    IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <UserControls:IpTextBox
                     Address="192.168.1.123"
                     Grid.Row="6"
                     Grid.Column="1"
-                    VerticalAlignment="Center" />
+                    IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
             </Grid>
         </Border>
         <StackPanel
