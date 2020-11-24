@@ -47,14 +47,24 @@ namespace NetworkConfigTool.UserControls
             var ipTextBox = dependencyObject as IpTextBox;
             var text = e.NewValue as string;
 
-            if (text != null && ipTextBox != null)
+            if (ipTextBox != null)
             {
                 ipTextBox._suppressAddressUpdate = true;
-                var i = 0;
-                foreach (var segment in text.Split('.'))
+                if (string.IsNullOrEmpty(text))
                 {
-                    ipTextBox._segments[i].Text = segment;
-                    i++;
+                    for (int iSegment = 0; iSegment < 4; iSegment++)
+                    {
+                        ipTextBox._segments[iSegment].Text = "";
+                    }
+                }
+                else
+                {
+                    var i = 0;
+                    foreach (var segment in text.Split('.'))
+                    {
+                        ipTextBox._segments[i].Text = segment;
+                        i++;
+                    }
                 }
                 ipTextBox._suppressAddressUpdate = false;
             }
