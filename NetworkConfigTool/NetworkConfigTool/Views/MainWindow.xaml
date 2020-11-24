@@ -34,11 +34,11 @@
                 Margin="0,0,8,0"
                 VerticalAlignment="Center" />
             <ComboBox
+                x:Name="AdapterComboBox"
+                DisplayMemberPath="AdapterName"
+                ItemsSource="{Binding Adapters}"
                 Width="150"
                 VerticalAlignment="Center">
-                <ComboBoxItem>Adapter 1</ComboBoxItem>
-                <ComboBoxItem>Adapter 2</ComboBoxItem>
-                <ComboBoxItem>Adapter 3</ComboBoxItem>
             </ComboBox>
         </StackPanel>
         <Border
@@ -105,15 +105,17 @@
                 <CheckBox
                     x:Name="SetUpInThisAppCheckBox"
                     Grid.Column="1"
+                    IsChecked="{Binding Path=SelectedItem.SetUpInThisApp, ElementName=AdapterComboBox}"
                     VerticalAlignment="Center"></CheckBox>
                 <CheckBox
                     x:Name="EnableCheckBox"
                     Grid.Row="1"
                     Grid.Column="1"
+                    IsChecked="{Binding Path=SelectedItem.Enabled, ElementName=AdapterComboBox}"
                     VerticalAlignment="Center"
                     Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}"></CheckBox>
                 <UserControls:IpTextBox
-                    Address="192.168.1.123"
+                    Address="{Binding Path=SelectedItem.IpAddress, ElementName=AdapterComboBox}"
                     Grid.Row="2"
                     Grid.Column="1"
                     IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
@@ -122,6 +124,7 @@
                 <ComboBox
                     Grid.Row="3"
                     Grid.Column="1"
+                    SelectedValuePath="{Binding SelectedItem.Mask, ElementName=AdapterComboBox}"
                     IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
                     VerticalAlignment="Center"
                     Width="60"
@@ -165,21 +168,21 @@
                     <ComboBoxItem>0</ComboBoxItem>
                 </ComboBox>
                 <UserControls:IpTextBox
-                    Address="192.168.1.123"
+                    Address="{Binding Path=SelectedItem.DefaultGateway, ElementName=AdapterComboBox}"
                     Grid.Row="4"
                     Grid.Column="1"
                     IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
                     VerticalAlignment="Center"
                     Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <UserControls:IpTextBox
-                    Address="192.168.1.123"
+                    Address="{Binding Path=SelectedItem.PrimaryDns, ElementName=AdapterComboBox}"
                     Grid.Row="5"
                     Grid.Column="1"
                     IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
                     VerticalAlignment="Center"
                     Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <UserControls:IpTextBox
-                    Address="192.168.1.123"
+                    Address="{Binding Path=SelectedItem.SecondaryDns, ElementName=AdapterComboBox}"
                     Grid.Row="6"
                     Grid.Column="1"
                     IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
