@@ -7,10 +7,12 @@ namespace NetworkConfigTool.Models
     public class Adapter
     {
         public string AdapterName { get; set; } = "";
-        public IPAddressData IpAddress { get; set; } = new IPAddressData(192, 168, 1, 1);
+        public bool SetUpInThisApp { get; set; } = true;
+        public bool Enabled { get; set; } = true;
+        public string IpAddress { get; set; } = "192.168.1.1";
         public int Mask { get; set; } = 24;
-        public IPAddressData? DefaultGateway { get; set; } = null;
-        public IPAddressData? PrimaryDns { get; set; } = null;
-        public IPAddressData? SecondaryDns { get; set; } = null;
+        public string DefaultGateway { get; set; } = "";
+        public string PrimaryDns { get; set; } = "";
+        public string SecondaryDns { get; set; } = "";
     }
 }
