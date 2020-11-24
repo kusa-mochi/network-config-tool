@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:vm="clr-namespace:NetworkConfigTool.ViewModels"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:UserControls="clr-namespace:NetworkConfigTool.UserControls"
     SizeToContent="WidthAndHeight"
     Title="Network config tool"
@@ -130,42 +131,50 @@
                     Width="60"
                     HorizontalAlignment="Left"
                     Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}">
-                    <ComboBoxItem>24</ComboBoxItem>
-                    <ComboBoxItem>16</ComboBoxItem>
-                    <ComboBoxItem>8</ComboBoxItem>
-                    <Separator />
-                    <ComboBoxItem>31</ComboBoxItem>
-                    <ComboBoxItem>30</ComboBoxItem>
-                    <ComboBoxItem>29</ComboBoxItem>
-                    <ComboBoxItem>28</ComboBoxItem>
-                    <ComboBoxItem>27</ComboBoxItem>
-                    <ComboBoxItem>26</ComboBoxItem>
-                    <ComboBoxItem>25</ComboBoxItem>
-                    <ComboBoxItem>24</ComboBoxItem>
-                    <ComboBoxItem>23</ComboBoxItem>
-                    <ComboBoxItem>22</ComboBoxItem>
-                    <ComboBoxItem>21</ComboBoxItem>
-                    <ComboBoxItem>20</ComboBoxItem>
-                    <ComboBoxItem>19</ComboBoxItem>
-                    <ComboBoxItem>18</ComboBoxItem>
-                    <ComboBoxItem>17</ComboBoxItem>
-                    <ComboBoxItem>16</ComboBoxItem>
-                    <ComboBoxItem>15</ComboBoxItem>
-                    <ComboBoxItem>14</ComboBoxItem>
-                    <ComboBoxItem>13</ComboBoxItem>
-                    <ComboBoxItem>12</ComboBoxItem>
-                    <ComboBoxItem>11</ComboBoxItem>
-                    <ComboBoxItem>10</ComboBoxItem>
-                    <ComboBoxItem>9</ComboBoxItem>
-                    <ComboBoxItem>8</ComboBoxItem>
-                    <ComboBoxItem>7</ComboBoxItem>
-                    <ComboBoxItem>6</ComboBoxItem>
-                    <ComboBoxItem>5</ComboBoxItem>
-                    <ComboBoxItem>4</ComboBoxItem>
-                    <ComboBoxItem>3</ComboBoxItem>
-                    <ComboBoxItem>2</ComboBoxItem>
-                    <ComboBoxItem>1</ComboBoxItem>
-                    <ComboBoxItem>0</ComboBoxItem>
+                    <ComboBox.ItemsSource>
+                        <x:Array
+                            Type="{x:Type System:Int32}">
+                            <System:Int32>24</System:Int32>
+                            <System:Int32>16</System:Int32>
+                            <System:Int32>8</System:Int32>
+                            <System:Int32>-1</System:Int32>
+                            <System:Int32>31</System:Int32>
+                            <System:Int32>30</System:Int32>
+                            <System:Int32>29</System:Int32>
+                            <System:Int32>28</System:Int32>
+                            <System:Int32>27</System:Int32>
+                            <System:Int32>26</System:Int32>
+                            <System:Int32>25</System:Int32>
+                            <System:Int32>24</System:Int32>
+                            <System:Int32>23</System:Int32>
+                            <System:Int32>22</System:Int32>
+                            <System:Int32>21</System:Int32>
+                            <System:Int32>20</System:Int32>
+                            <System:Int32>19</System:Int32>
+                            <System:Int32>18</System:Int32>
+                            <System:Int32>17</System:Int32>
+                            <System:Int32>16</System:Int32>
+                            <System:Int32>15</System:Int32>
+                            <System:Int32>14</System:Int32>
+                            <System:Int32>13</System:Int32>
+                            <System:Int32>12</System:Int32>
+                            <System:Int32>11</System:Int32>
+                            <System:Int32>10</System:Int32>
+                            <System:Int32>31</System:Int32>
+                            <System:Int32>31</System:Int32>
+                            <System:Int32>31</System:Int32>
+                            <System:Int32>31</System:Int32>
+                            <System:Int32>31</System:Int32>
+                            <System:Int32>31</System:Int32>
+                            <System:Int32>31</System:Int32>
+                            <System:Int32>31</System:Int32>
+                            <System:Int32>31</System:Int32>
+                            <System:Int32>31</System:Int32>
+                            <System:Int32>31</System:Int32>
+                            <System:Int32>31</System:Int32>
+                            <System:Int32>31</System:Int32>
+                        </x:Array>
+                    </ComboBox.ItemsSource>
                 </ComboBox>
                 <UserControls:IpTextBox
                     Address="{Binding Path=SelectedItem.DefaultGateway, ElementName=AdapterComboBox}"
