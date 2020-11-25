@@ -125,7 +125,7 @@
                 <ComboBox
                     Grid.Row="3"
                     Grid.Column="1"
-                    SelectedValuePath="{Binding SelectedItem.Mask, ElementName=AdapterComboBox}"
+                    SelectedValue="{Binding SelectedItem.Mask, ElementName=AdapterComboBox}"
                     IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
                     VerticalAlignment="Center"
                     Width="60"
