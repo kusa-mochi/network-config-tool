@@ -39,7 +39,8 @@
                 DisplayMemberPath="AdapterName"
                 ItemsSource="{Binding Adapters}"
                 Width="150"
-                VerticalAlignment="Center">
+                VerticalAlignment="Center"
+                SelectedItem="{Binding CurrentAdapter, Mode=OneWayToSource}">
             </ComboBox>
         </StackPanel>
         <Border
@@ -64,11 +65,16 @@
                         Height="24" />
                     <RowDefinition
                         Height="24" />
+                    <RowDefinition
+                        Height="24" />
+                    <RowDefinition
+                        Height="24" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
-                        Width="100" />
-                    <ColumnDefinition />
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="120" />
                 </Grid.ColumnDefinitions>
                 <TextBlock
                     Text="Set up in this App"
@@ -79,53 +85,71 @@
                     VerticalAlignment="Center"
                     Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <TextBlock
-                    Text="IP Address"
+                    Text="Set IP Address Automatically"
                     Grid.Row="2"
                     VerticalAlignment="Center"
                     Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <TextBlock
-                    Text="Mask"
+                    Text="IP Address"
                     Grid.Row="3"
                     VerticalAlignment="Center"
                     Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <TextBlock
-                    Text="Default Gateway"
+                    Text="Mask"
                     Grid.Row="4"
                     VerticalAlignment="Center"
                     Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <TextBlock
-                    Text="Primary DNS"
+                    Text="Default Gateway"
                     Grid.Row="5"
                     VerticalAlignment="Center"
                     Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <TextBlock
-                    Text="Secondary DNS"
+                    Text="Set DNS Address Automatically"
                     Grid.Row="6"
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
+                <TextBlock
+                    Text="Primary DNS"
+                    Grid.Row="7"
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
+                <TextBlock
+                    Text="Secondary DNS"
+                    Grid.Row="8"
                     VerticalAlignment="Center"
                     Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <CheckBox
                     x:Name="SetUpInThisAppCheckBox"
                     Grid.Column="1"
-                    IsChecked="{Binding Path=SelectedItem.SetUpInThisApp, ElementName=AdapterComboBox}"
+                    IsChecked="{Binding CurrentAdapter.SetUpInThisApp}"
                     VerticalAlignment="Center"></CheckBox>
                 <CheckBox
                     x:Name="EnableCheckBox"
                     Grid.Row="1"
                     Grid.Column="1"
-                    IsChecked="{Binding Path=SelectedItem.Enabled, ElementName=AdapterComboBox}"
+                    IsChecked="{Binding CurrentAdapter.Enabled}"
                     VerticalAlignment="Center"
                     Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}"></CheckBox>
-                <UserControls:IpTextBox
-                    Address="{Binding Path=SelectedItem.IpAddress, ElementName=AdapterComboBox}"
+                <CheckBox
+                    x:Name="AutoIpCheckBox"
                     Grid.Row="2"
+                    Grid.Column="1"
+                    IsChecked="{Binding CurrentAdapter.AutoIpAddress}"
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}"
+                    IsEnabled="{Binding CurrentAdapter.Enabled}" />
+                <UserControls:IpTextBox
+                    Address="{Binding CurrentAdapter.IpAddress}"
+                    Grid.Row="3"
                     Grid.Column="1"
                     IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
                     VerticalAlignment="Center"
                     Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
                 <ComboBox
-                    Grid.Row="3"
+                    Grid.Row="4"
                     Grid.Column="1"
-                    SelectedValue="{Binding SelectedItem.Mask, ElementName=AdapterComboBox}"
+                    SelectedValue="{Binding CurrentAdapter.Mask}"
                     IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
                     VerticalAlignment="Center"
                     Width="60"
@@ -177,28 +201,56 @@
                     </ComboBox.ItemsSource>
                 </ComboBox>
                 <UserControls:IpTextBox
-                    Address="{Binding Path=SelectedItem.DefaultGateway, ElementName=AdapterComboBox}"
-                    Grid.Row="4"
-                    Grid.Column="1"
-                    IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
-                    VerticalAlignment="Center"
-                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
-                <UserControls:IpTextBox
-                    Address="{Binding Path=SelectedItem.PrimaryDns, ElementName=AdapterComboBox}"
+                    Address="{Binding CurrentAdapter.DefaultGateway}"
                     Grid.Row="5"
                     Grid.Column="1"
                     IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
                     VerticalAlignment="Center"
                     Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
-                <UserControls:IpTextBox
-                    Address="{Binding Path=SelectedItem.SecondaryDns, ElementName=AdapterComboBox}"
+                <CheckBox
+                    x:Name="AutoDnsCheckBox"
                     Grid.Row="6"
+                    Grid.Column="1"
+                    IsChecked="{Binding CurrentAdapter.AutoDnsAddress}"
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}"
+                    IsEnabled="{Binding CurrentAdapter.Enabled}" />
+                <UserControls:IpTextBox
+                    Address="{Binding CurrentAdapter.PrimaryDns}"
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
+                <UserControls:IpTextBox
+                    Address="{Binding CurrentAdapter.SecondaryDns}"
+                    Grid.Row="8"
                     Grid.Column="1"
                     IsEnabled="{Binding IsChecked, ElementName=EnableCheckBox}"
                     VerticalAlignment="Center"
                     Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=SetUpInThisAppCheckBox}" />
             </Grid>
         </Border>
+        <CheckBox
+            x:Name="UseProxyCheckBox"
+            Height="24"
+            VerticalContentAlignment="Center"
+            Margin="8,0,0,0"
+            IsChecked="{Binding Proxy.UseProxy}">Use Proxy</CheckBox>
+        <StackPanel
+            Height="24"
+            Orientation="Horizontal"
+            Margin="16,0,0,0">
+            <TextBlock
+                Margin="0,0,8,0"
+                Text="Proxy Address"
+                VerticalAlignment="Center" />
+            <UserControls:IpTextBox
+                Address="{Binding Proxy.ProxyAddress}"
+                VerticalContentAlignment="Center"
+                Width="120"
+                IsEnabled="{Binding Proxy.UseProxy}" />
+        </StackPanel>
         <StackPanel
             Orientation="Horizontal"
             HorizontalAlignment="Right">
